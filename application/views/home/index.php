@@ -12,7 +12,8 @@
             <input type="text" value="<?php echo $u->nama ?>" name="nama" hidden>
             <input type="text" value="<?php echo $u->harga ?>" name="harga" hidden>
             <input type="text" value="<?php echo $u->stock ?>" name="stock" hidden>
-            <input type="submit" value="+Keranjang" class="btn-primary">
+            <button class="btn btn-primary" type="submit">+keranjang</button>
+            <!-- <input type="submit" value="+Keranjang" class="btn-primary"> -->
             <!-- <button class="btn-primary">+ Pesanan</button> -->
           </form>
         </div>

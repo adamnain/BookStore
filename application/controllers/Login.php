@@ -9,7 +9,8 @@ class Login extends CI_Controller{
 	}
 
 	function index(){
-		$this->load->view('v_login');
+		$data['content'] = ('v_login.php');
+		$this->load->view('home/header', $data);
 	}
 
 	function admin(){

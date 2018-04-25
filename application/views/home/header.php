@@ -23,6 +23,8 @@
           <li><a href="#">About Us</a></li>
           <li><a href="#">Pesan Admin</a></li>
           <li><a href="#">Chart</a></li>
+          <li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
+
         </ul>
       </div>
     </nav>

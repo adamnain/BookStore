@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 	function chart(){
 		$username = $this->session->userdata('nama');
 		$where = array(
-			'status_pembayaran' => 0,
+			'status_pembayaran' => 1,
 			'username' => $username
 		);
 		$data['pesanan'] = $this->m_data->ambil_data_kondisi('pesanan', $where)->result();
@@ -39,14 +39,14 @@ class Home extends CI_Controller {
 	function update_chart(){
 		 $username = $this->session->userdata('nama');
 		 $where = array(
-			 'status_pembayaran' => 0,
+			 'status_pembayaran' => 1,
 			 'username' => $username
 		 );
 		 $data = array(
-			 'status_pembayaran' => 1
+			 'status_pembayaran' => 0
 		 );
-		 $this->m_data->update_data_chart($where,$data,$table);
-
+		 $this->m_data->update_data_chart($where,$data,'pesanan');
+		 redirect('home/chart');
 	}
 
 	function tambah_chart(){
@@ -56,7 +56,7 @@ class Home extends CI_Controller {
 		  'nama_barang' => set_value('nama'),
 		  'harga' => set_value('harga'),
 		  'jumlah' => 1,
-		  'status_pembayaran' => 0
+		  'status_pembayaran' => 1
 		 ];
 			$this->m_data->input_data($data, 'pesanan');
 			redirect('home/chart');
