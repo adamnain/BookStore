@@ -16,12 +16,15 @@ class Dashboard extends CI_Controller {
 
 	function index(){
 		$data['barang'] = $this->m_data->ambil_data('barang')->result();
-		$this->load->view('v_list_dashboard.php', $data);
+		$data['content'] = ('v_list_dashboard.php');
+		$this->load->view('sidebar.php', $data);
 	}
 
 	function tambah(){
 		$data['kategori'] = $this->m_data->ambil_data('kategori')->result();
-		$this->load->view('v_input_barang', $data);
+		$data['content'] = ('v_input_barang.php');
+		$this->load->view('sidebar.php', $data);
+
 	}
 
 	function tambah_aksi(){
@@ -63,8 +66,11 @@ class Dashboard extends CI_Controller {
 
 	function edit($id){
 		$where = array('id' => $id);
-		$data['user'] = $this->m_data->edit_data($where,'barang')->result();
-		$this->load->view('v_update_barang',$data);
+		$data['content'] = ('v_update_barang');
+		$data['kategori'] = $this->m_data->ambil_data('kategori')->result();
+		$data['barang'] = $this->m_data->edit_data($where,'barang')->result();
+		$this->load->view('sidebar.php', $data);
+
 	}
 
 	function update(){
@@ -94,5 +100,74 @@ class Dashboard extends CI_Controller {
 				redirect('dashboard/index');
 			}
 		}
+
+		//kategori buku
+		function kategori(){
+			$data['kategori'] = $this->m_data->ambil_data('kategori')->result();
+			$data['content'] = ('kategori/v_list_kategori.php');
+			$this->load->view('sidebar.php', $data);
+		}
+
+		function tambah_kategori(){
+			$data['content'] = ('kategori/v_input_kategori.php');
+			$this->load->view('sidebar.php', $data);
+		}
+
+		function tambah_kategori_aksi(){
+			$nama_kategori = $this->input->post('nama_kategori');
+
+			$data = array(
+				'nama_kategori' => $nama_kategori
+				);
+			$this->m_data->input_data($data,'kategori');
+			redirect('dashboard/kategori');
+		}
+
+		function edit_kategori($id){
+			$where = array('id' => $id);
+			$data['kategori'] = $this->m_data->edit_data($where,'kategori')->result();
+			$data['content'] = ('kategori/v_update_kategori.php');
+			$this->load->view('sidebar.php', $data);
+		}
+
+		function edit_kategori_aksi(){
+			$id = $this->input->post('id');
+			$nama_kategori = $this->input->post('nama_kategori');
+
+			$data = array(
+				'id' => $id,
+				'nama_kategori' => $nama_kategori
+			);
+
+			$this->m_data->update_data($id, $data,'kategori');
+			redirect('dashboard/kategori');
+		}
+
+		function hapus_kategori($id){
+			$where = array('id' => $id);
+			$this->m_data->hapus_data($where,'kategori');
+			redirect('dashboard/kategori');
+		}
+
+		function list_user(){
+			$data['userdata'] = $this->m_data->ambil_data('userdata')->result();
+			$data['content'] = ('kategori/v_list_user.php');
+			$this->load->view('sidebar.php', $data);
+		}
+
+		function list_pesanan(){
+			$where = array('status_pembayaran' => 3);
+			$data['pesanan'] = $this->m_data->ambil_data_kondisi('pesanan', $where)->result();
+			$data['content'] = ('kategori/v_list_pesanan.php');
+			$this->load->view('sidebar.php', $data);
+		}
+
+		function inbox(){
+			$data['pesan'] = $this->m_data->ambil_data('pesan')->result();
+			$data['content'] = ('v_pesan_dashboard.php');
+			$this->load->view('sidebar.php', $data);
+		}
+
+
 
 }

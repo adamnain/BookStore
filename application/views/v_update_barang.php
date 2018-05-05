@@ -7,34 +7,35 @@
 	<center>
 		<h3>Edit Data</h3>
 	</center>
-	<?php foreach($user as $u){ ?>
+	<?php foreach($barang as $u){ ?>
 		<form action="<?php echo base_url().'dashboard/update'; ?>" method="post" enctype="multipart/form-data">
-			<table style="margin:20px auto;">
-				<tr>
-					<td>Nama</td>
-						<input type="text" name="id" value="<?php echo $u->id ?>" hidden>
-					<td><input type="text" name="nama" value="<?php echo $u->nama ?>"></td>
-				</tr>
-				<tr>
-					<td>Harga</td>
-					<td><input type="text" name="harga" value="<?php echo $u->harga ?>"></td>
-				</tr>
-				<tr>
-					<td>stock</td>
-					<td><input type="text" name="stock" value="<?php echo $u->stock ?>"></td>
-				</tr>
-				<tr>
-					<td>kategori</td>
-					<td><input type="text" name="kategori" value="<?php echo $u->kategori ?>"></td>
-				</tr>
-				<tr>
-						<input type="file" name="userfile" value="<?php echo $u->foto ?>" />
-				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" value="Tambah"></td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<label >Nama:</label>
+				<input type="text" class="form-control" name="nama" value="<?php echo $u->nama ?>">
+				<input type="text" name="id" value="<?php echo $u->id ?>" hidden>
+			</div>
+			<div class="form-group">
+				<label >Harga:</label>
+				<input type="text" class="form-control" name="harga" value="<?php echo $u->harga ?>">
+			</div>
+			<div class="form-group">
+				<label for="kategori">Kategori:</label>
+				<select class="form-control" name="kategori">
+					<?php foreach ($kategori as $row) {?>
+						<option value="<?php echo $row->nama_kategori?>"><?php echo $row->nama_kategori?></option>
+					<?php }?>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label >Cover Buku:</label>
+				<input type="file" name="userfile" value="<?php echo $u->foto ?>" />
+			</div>
+			<div class="form-group">
+				<input class="btn btn-primary" type="submit" value="Tambah">
+			</div>
+
+
 		</form>
 	<?php } ?>
 </body>

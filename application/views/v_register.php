@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat CRUD dengan CodeIgniter | MalasNgoding.com</title>
+	<title>Register</title>
 </head>
 <body>
 	<center>
-		<h1>Membuat CRUD dengan CodeIgniter | MalasNgoding.com</h1>
-		<h3>Tambah data baru</h3>
+		<h3>Register User</h3>
 	</center>
 	<form action="<?php echo base_url().'login/register_aksi'; ?>" method="post">
 		<table style="margin:20px auto;">
@@ -17,7 +16,7 @@
 			<tr>
 				<td>Password</td>
 				<td><input type="text" name="password"></td>
-				<td><input type="text" name="role" value="0"></td>
+				<td><input type="text" name="role" value="0" hidden></td>
 			</tr>
       <tr>
         <td><input type="submit" value="submit"></td>

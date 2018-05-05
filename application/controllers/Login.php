@@ -14,7 +14,8 @@ class Login extends CI_Controller{
 	}
 
 	function admin(){
-		$this->load->view('v_login_admin');
+		$data['content'] = ('v_login_admin');
+		$this->load->view('home/header', $data);
 	}
 
 	function aksi_login_admin(){
@@ -69,11 +70,12 @@ class Login extends CI_Controller{
 
 	function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('login'));
+		redirect(base_url('home'));
 	}
 
 	function register(){
-		$this->load->view('v_register');
+		$data['content'] = ('v_register');
+		$this->load->view('home/header', $data);
 	}
 
 	function register_aksi(){

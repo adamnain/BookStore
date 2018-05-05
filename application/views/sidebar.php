@@ -12,23 +12,21 @@
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <div class="container-fluid" style="padding: 0px !important; width: 100% !important; margin: 0px !important;">
-  <header>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="<?php echo base_url()?>">Toko Buku Saya</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="<?php echo base_url()?>">Home</a></li>
-          <li><a href="<?php echo base_url().'home/about';?>">About Us</a></li>
-          <li><a href="<?php echo base_url().'home/contact'; ?>">Contact Us</a></li>
-          <li><a href="<?php echo base_url().'home/chart'; ?>">Chart</a></li>
-          <li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
+  <div class="col-lg-3" style="padding: 0px !important; margin: 0px !important;">
+    <section id="sidebar">
+      <ul>
+        <li><h2> Welcome, <?php echo $this->session->userdata("nama"); ?></h2><li>
+        <li><a href="<?php echo base_url('dashboard'); ?>">Data Buku</a></li>
+        <li><a href="<?php echo base_url('dashboard/kategori'); ?>">Kategori Buku</a></li>
+        <li><a href="<?php echo base_url('dashboard/list_user'); ?>">List User</a></li>
+        <li><a href="<?php echo base_url('dashboard/list_pesanan'); ?>">Pesanan Buku</a></li>
+        <li><a href="<?php echo base_url('dashboard/inbox'); ?>">Inbox</a></li>
+        <li><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
+      </ul>
+    </section>
+  </div>
 
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <div class="col-lg-9">
+    <?php $this->load->view($content); ?>
+  </div>
 </div>
-
-<?php $this->load->view($content); ?>
